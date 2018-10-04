@@ -1,0 +1,72 @@
+
+<nav class="navbar navbar-default" >
+  <div class="container-fluid container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">BizOrg Funding</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+.
+      
+    <ul class="nav navbar-nav navbar-right">
+      <li><button onclick="location.href='/businesses/sign_up'" type="button" class="btn btn-primary navbar-btn"><li class=" important"><%= link_to("Business Sign Up", new_business_registration_path, class:"important") %></li></button></li>
+      <li><button onclick="location.href='/orginizations/sign_up'" type="button" class="btn btn-primary navbar-btn"><li class=" important"><%= link_to("Orginization Sign Up", new_orginization_registration_path, class:"important") %></li></button></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In As <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+         <li><%= link_to("Business Sign In", new_business_session_path) %></li>
+        <li><%= link_to("Orginization Sign In", new_orginization_session_path) %></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<style>
+  @media (min-width: 979px) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
+}
+  ul.nav li.dropdown:hover{
+    background-color: #d8d7d0;
+  }
+  ul.nav li.dropdown{
+    transition: background 0.2s ease-in-out;
+  }
+  ul.nav a.important{
+    text-decoration:none;
+    color:white;
+    transition:none;
+    height: 100%;
+    line-height:30px;
+  }
+.navbar-btn{
+  margin-right:10px;
+}
+.navbar-default{
+  min-height:60px;
+  vertical-align:center;
+}
+.navbar-default .navbar-nav > li > a,
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 60px;
+}
+
+
+
+
+
+
+</style>

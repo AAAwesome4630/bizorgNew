@@ -1,0 +1,19 @@
+<h1>Pages#index</h1>
+<% if !business_signed_in? and !orginization_signed_in?%>
+<p>Find me in app/views/pages/index.html.erb</p>
+
+<%= link_to("Business Sign In", new_business_session_path)%>
+
+<br />
+
+<%= link_to("Orginization Sign In",  new_orginization_session_path)%>
+<% elsif business_signed_in?%>
+
+<%= render 'biz_offers/form.html.erb'%>
+
+<%else%>
+
+<%= render 'org_offers/form.html.erb'%>
+
+
+<%end%>
