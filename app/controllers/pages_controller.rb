@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-  def index
+   def index
+    @biz_offer = BizOffer.new()
+    @org_offer = OrgOffer.new()
   end
 
   def home
