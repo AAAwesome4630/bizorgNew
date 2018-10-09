@@ -36,10 +36,21 @@ class DeviseTokenAuthCreateBusinesses < ActiveRecord::Migration
       # t.datetime :locked_at
 
       ## User Info
-      t.string :name
-      t.string :nickname
+      t.string :first_name
+      t.string :last_name
       t.string :image
       t.string :email
+      t.string :name
+      t.string :address
+      t.string :city
+      t.string :state
+      t.string :country
+      t.string :zipcode
+      t.string :phone_number
+      t.string :website
+      t.string :type
+      t.string :description
+      t.boolean :location_specific
 
       ## Tokens
       t.text :tokens
@@ -48,6 +59,7 @@ class DeviseTokenAuthCreateBusinesses < ActiveRecord::Migration
     end
 
     add_index :businesses, :email,                unique: true
+    add_index :businesses, :name,                unique: true
     add_index :businesses, [:uid, :provider],     unique: true
     add_index :businesses, :reset_password_token, unique: true
     add_index :businesses, :confirmation_token,   unique: true

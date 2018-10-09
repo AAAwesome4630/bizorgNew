@@ -39,10 +39,21 @@ ActiveRecord::Schema.define(version: 20180914035522) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "name"
-    t.string   "nickname"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "image"
     t.string   "email"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.string   "website"
+    t.string   "type"
+    t.string   "description"
+    t.boolean  "location_specific"
     t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -50,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180914035522) do
 
   add_index "businesses", ["confirmation_token"], name: "index_businesses_on_confirmation_token", unique: true
   add_index "businesses", ["email"], name: "index_businesses_on_email", unique: true
+  add_index "businesses", ["name"], name: "index_businesses_on_name", unique: true
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
   add_index "businesses", ["uid", "provider"], name: "index_businesses_on_uid_and_provider", unique: true
 
@@ -79,10 +91,22 @@ ActiveRecord::Schema.define(version: 20180914035522) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "name"
-    t.string   "nickname"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "image"
     t.string   "email"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.string   "website"
+    t.string   "type"
+    t.string   "description"
+    t.boolean  "public"
+    t.boolean  "location_specific"
     t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -90,6 +114,7 @@ ActiveRecord::Schema.define(version: 20180914035522) do
 
   add_index "orginizations", ["confirmation_token"], name: "index_orginizations_on_confirmation_token", unique: true
   add_index "orginizations", ["email"], name: "index_orginizations_on_email", unique: true
+  add_index "orginizations", ["name"], name: "index_orginizations_on_name", unique: true
   add_index "orginizations", ["reset_password_token"], name: "index_orginizations_on_reset_password_token", unique: true
   add_index "orginizations", ["uid", "provider"], name: "index_orginizations_on_uid_and_provider", unique: true
 

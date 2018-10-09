@@ -36,10 +36,22 @@ class DeviseTokenAuthCreateOrginizations < ActiveRecord::Migration
       # t.datetime :locked_at
 
       ## User Info
-      t.string :name
-      t.string :nickname
+      t.string :first_name
+      t.string :last_name
       t.string :image
       t.string :email
+      t.string :name
+      t.string :address
+      t.string :city
+      t.string :state
+      t.string :country
+      t.string :zipcode
+      t.string :phone_number
+      t.string :website
+      t.string :type
+      t.string :description
+      t.boolean :public
+      t.boolean :location_specific
 
       ## Tokens
       t.text :tokens
@@ -48,6 +60,7 @@ class DeviseTokenAuthCreateOrginizations < ActiveRecord::Migration
     end
 
     add_index :orginizations, :email,                unique: true
+    add_index :orginizations, :name,                unique: true
     add_index :orginizations, [:uid, :provider],     unique: true
     add_index :orginizations, :reset_password_token, unique: true
     add_index :orginizations, :confirmation_token,   unique: true
