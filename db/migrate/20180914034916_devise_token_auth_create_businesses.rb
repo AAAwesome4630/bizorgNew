@@ -48,7 +48,7 @@ class DeviseTokenAuthCreateBusinesses < ActiveRecord::Migration
       t.string :zipcode
       t.string :phone_number
       t.string :website
-      t.string :type
+      t.string :type_of
       t.string :description
       t.boolean :location_specific
 

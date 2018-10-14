@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180914035522) do
+ActiveRecord::Schema.define(version: 20181009072106) do
 
   create_table "biz_offers", force: :cascade do |t|
     t.string   "offer"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20180914035522) do
     t.string   "zipcode"
     t.string   "phone_number"
     t.string   "website"
-    t.string   "type"
+    t.string   "type_of"
     t.string   "description"
     t.boolean  "location_specific"
     t.text     "tokens"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20180914035522) do
     t.string   "zipcode"
     t.string   "phone_number"
     t.string   "website"
-    t.string   "type"
+    t.string   "type_of"
     t.string   "description"
     t.boolean  "public"
     t.boolean  "location_specific"
@@ -117,5 +117,36 @@ ActiveRecord::Schema.define(version: 20180914035522) do
   add_index "orginizations", ["name"], name: "index_orginizations_on_name", unique: true
   add_index "orginizations", ["reset_password_token"], name: "index_orginizations_on_reset_password_token", unique: true
   add_index "orginizations", ["uid", "provider"], name: "index_orginizations_on_uid_and_provider", unique: true
+
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",               default: "email", null: false
+    t.string   "uid",                    default: "",      null: false
+    t.string   "encrypted_password",     default: "",      null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.boolean  "allow_password_change",  default: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,       null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "image"
+    t.text     "tokens"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
 end

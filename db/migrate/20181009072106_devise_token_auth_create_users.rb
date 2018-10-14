@@ -1,7 +1,7 @@
-class DeviseTokenAuthCreateOrginizations < ActiveRecord::Migration
+class DeviseTokenAuthCreateUsers < ActiveRecord::Migration
   def change
     
-    create_table(:orginizations) do |t|
+    create_table(:users) do |t|
       ## Required
       t.string :provider, :null => false, :default => "email"
       t.string :uid, :null => false, :default => ""
@@ -38,20 +38,8 @@ class DeviseTokenAuthCreateOrginizations < ActiveRecord::Migration
       ## User Info
       t.string :first_name
       t.string :last_name
-      t.string :image
       t.string :email
-      t.string :name
-      t.string :address
-      t.string :city
-      t.string :state
-      t.string :country
-      t.string :zipcode
-      t.string :phone_number
-      t.string :website
-      t.string :type_of
-      t.string :description
-      t.boolean :public
-      t.boolean :location_specific
+      t.string :image
 
       ## Tokens
       t.text :tokens
@@ -59,11 +47,10 @@ class DeviseTokenAuthCreateOrginizations < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :orginizations, :email,                unique: true
-    add_index :orginizations, :name,                unique: true
-    add_index :orginizations, [:uid, :provider],     unique: true
-    add_index :orginizations, :reset_password_token, unique: true
-    add_index :orginizations, :confirmation_token,   unique: true
-    # add_index :orginizations, :unlock_token,       unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, [:uid, :provider],     unique: true
+    add_index :users, :reset_password_token, unique: true
+    add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,       unique: true
   end
 end
