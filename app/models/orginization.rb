@@ -3,7 +3,6 @@
 class Orginization < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :org_offers
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -17,4 +16,8 @@ class Orginization < ActiveRecord::Base
   validates_presence_of :type_of
   validates_presence_of :description
   include DeviseTokenAuth::Concerns::User
+  
+  def self.search(search)
+    where("LOWER(name) LIKE ?", "%#{search.downcase}%") 
+  end
 end

@@ -1,3 +1,3 @@
 class OrgOffer < ActiveRecord::Base
-  belongs_to :orginization
+  belongs_to :orginizations
 end

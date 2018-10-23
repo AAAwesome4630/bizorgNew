@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   
-  root 'pages#index'
-  
   resources :org_offers
   resources :biz_offers
+  resources :deals
+  root 'pages#index'
+  
+  get '/home' => 'pages#home'
+  get '/business/:id' => 'pages#business'
+  get 'orginization/:id' => 'pages#orginization'
+  get '/explore' => 'pages#explore'
+  get '/find' => 'pages#find'
   
   devise_for :businesses
   devise_for :orginizations
@@ -21,9 +27,9 @@ Rails.application.routes.draw do
       as :user do
         # Define routes for User within this block.
       end
-      resources :org_offers
-      resources :biz_offers
-      
+       
+       resources :deals
+              
     end
   end
   

@@ -12,12 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :offer %><br>
-    <%= f.text_field :offer %>
+    <%= f.label :orginizations_id %><br>
+    <%= f.text_field :orginizations_id %>
   </div>
   <div class="field">
-    <%= f.label :orginization_id %><br>
-    <%= f.text_field :orginization_id %>
+    <%= f.label :members %><br>
+    <%= f.number_field :members %>
+  </div>
+  <div class="field">
+    <%= f.label :percentage %><br>
+    <%= f.number_field :percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :offer %><br>
+    <%= f.text_field :offer %>
   </div>
   <div class="actions">
     <%= f.submit %>

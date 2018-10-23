@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Offer:</strong>
-  <%= @biz_offer.offer %>
+  <strong>Business:</strong>
+  <%= @biz_offer.business.name %>
 </p>
 
 <p>
-  <strong>Business:</strong>
-  <%= @biz_offer.business %>
+  <strong>Percentage:</strong>
+  <%= @biz_offer.percentage %>
+</p>
+
+<p>
+  <strong>Requirement:</strong>
+  <%= @biz_offer.requirement %>
+</p>
+
+<p>
+  <strong>Offer:</strong>
+  <%= @biz_offer.offer %>
 </p>
 
 <%= link_to 'Edit', edit_biz_offer_path(@biz_offer) %> |

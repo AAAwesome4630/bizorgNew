@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  offer: MyString
   business_id: 
+  percentage: 1
+  requirement: 1
+  offer: MyString
 
 two:
-  offer: MyString
   business_id: 
+  percentage: 1
+  requirement: 1
+  offer: MyString

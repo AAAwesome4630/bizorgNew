@@ -5,8 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Orginizations</th>
+      <th>Members</th>
+      <th>Percentage</th>
       <th>Offer</th>
-      <th>Orginization</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +16,10 @@
   <tbody>
     <% @org_offers.each do |org_offer| %>
       <tr>
+        <td><%= org_offer.orginizations %></td>
+        <td><%= org_offer.members %></td>
+        <td><%= org_offer.percentage %></td>
         <td><%= org_offer.offer %></td>
-        <td><%= org_offer.orginization %></td>
         <td><%= link_to 'Show', org_offer %></td>
         <td><%= link_to 'Edit', edit_org_offer_path(org_offer) %></td>
         <td><%= link_to 'Destroy', org_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

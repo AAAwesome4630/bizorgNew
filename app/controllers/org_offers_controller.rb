@@ -1,6 +1,6 @@
 class OrgOffersController < ApplicationController
-  before_action :authenticate_orginization, only: [:edit, :update, :create, :destroy]
   before_action :set_org_offer, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_orginization!, only: [:create, :new, :edit, :update]
 
   # GET /org_offers
   # GET /org_offers.json
@@ -70,6 +70,6 @@ class OrgOffersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def org_offer_params
-      params.require(:org_offer).permit(:offer, :orginization_id)
+      params.require(:org_offer).permit(:orginizations_id, :members, :percentage, :offer)
     end
 end

@@ -18,7 +18,7 @@ class OrgOffersControllerTest < ActionController::TestCase
 
   test "should create org_offer" do
     assert_difference('OrgOffer.count') do
-      post :create, org_offer: { offer: @org_offer.offer, orginization_id: @org_offer.orginization_id }
+      post :create, org_offer: { members: @org_offer.members, offer: @org_offer.offer, orginizations_id: @org_offer.orginizations_id, percentage: @org_offer.percentage }
     end
 
     assert_redirected_to org_offer_path(assigns(:org_offer))
@@ -35,7 +35,7 @@ class OrgOffersControllerTest < ActionController::TestCase
   end
 
   test "should update org_offer" do
-    patch :update, id: @org_offer, org_offer: { offer: @org_offer.offer, orginization_id: @org_offer.orginization_id }
+    patch :update, id: @org_offer, org_offer: { members: @org_offer.members, offer: @org_offer.offer, orginizations_id: @org_offer.orginizations_id, percentage: @org_offer.percentage }
     assert_redirected_to org_offer_path(assigns(:org_offer))
   end
 

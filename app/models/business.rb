@@ -9,4 +9,8 @@ class Business < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+  
+  def self.search(search)
+    where("LOWER(name) LIKE ?", "%#{search.downcase}%") 
+  end
 end

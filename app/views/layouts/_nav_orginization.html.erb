@@ -20,19 +20,14 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-          <form class="navbar-form navbar-right">
-        <%= form_tag("/find", method: "get") do %>
-        <div class="form-group">
-          <%= label_tag(:q, "") %>
-          <%= text_field_tag(:q) %>
-        </div>
-        <%= submit_tag("Search") %>
-        <%end%>
-      </form>
+          <%= form_tag(find_path, method: 'get', class: 'navbar-form navbar-right') do %>
+        <%= search_field_tag 'search', nil, class: 'form-control', placeholder: 'Search'  %>
+        <%= submit_tag "Submit", class: 'btn btn-default', :name => nil %>
+      <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_orginization.name %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
+            <li><a href="/orginization/<%=current_orginization.id%>">Profile</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Help</a></li>
             <li role="separator" class="divider"></li>

@@ -1,5 +1,6 @@
 class BizOffersController < ApplicationController
   before_action :set_biz_offer, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_business!, only: [:create, :new, :edit, :update]
 
   # GET /biz_offers
   # GET /biz_offers.json
@@ -69,6 +70,6 @@ class BizOffersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def biz_offer_params
-      params.require(:biz_offer).permit(:offer, :business_id)
+      params.require(:biz_offer).permit(:business_id, :percentage, :requirement, :offer)
     end
 end

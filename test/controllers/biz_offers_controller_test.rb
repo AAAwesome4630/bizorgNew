@@ -18,7 +18,7 @@ class BizOffersControllerTest < ActionController::TestCase
 
   test "should create biz_offer" do
     assert_difference('BizOffer.count') do
-      post :create, biz_offer: { business_id: @biz_offer.business_id, offer: @biz_offer.offer }
+      post :create, biz_offer: { business_id: @biz_offer.business_id, offer: @biz_offer.offer, percentage: @biz_offer.percentage, requirement: @biz_offer.requirement }
     end
 
     assert_redirected_to biz_offer_path(assigns(:biz_offer))
@@ -35,7 +35,7 @@ class BizOffersControllerTest < ActionController::TestCase
   end
 
   test "should update biz_offer" do
-    patch :update, id: @biz_offer, biz_offer: { business_id: @biz_offer.business_id, offer: @biz_offer.offer }
+    patch :update, id: @biz_offer, biz_offer: { business_id: @biz_offer.business_id, offer: @biz_offer.offer, percentage: @biz_offer.percentage, requirement: @biz_offer.requirement }
     assert_redirected_to biz_offer_path(assigns(:biz_offer))
   end
 

@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  orginizations_id: 
+  members: 1
+  percentage: 1
   offer: MyString
-  orginization_id: 
 
 two:
+  orginizations_id: 
+  members: 1
+  percentage: 1
   offer: MyString
-  orginization_id: 

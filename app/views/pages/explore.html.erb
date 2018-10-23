@@ -1,0 +1,8 @@
+<% if !business_signed_in? && !orginization_signed_in?%>
+  <%= render '/layouts/nav_guest' %>
+<% elsif business_signed_in? %>
+  <%= render '/layouts/nav_business' %>
+<%else%>
+  <%= render '/layouts/nav_orginization' %>
+
+<% end %>

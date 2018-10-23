@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_id: 1
+  originzation_id: 1
+  biz_accepted: false
+  org_accepted: false
+  integer: 
+  integer: 
+  requirement: 1
+  offer: MyString
+
+two:
+  business_id: 1
+  originzation_id: 1
+  biz_accepted: false
+  org_accepted: false
+  integer: 
+  integer: 
+  requirement: 1
+  offer: MyString

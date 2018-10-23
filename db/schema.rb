@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181009072106) do
+ActiveRecord::Schema.define(version: 20181020072033) do
 
   create_table "biz_offers", force: :cascade do |t|
-    t.string   "offer"
     t.integer  "business_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "percentage",  default: 10, null: false
+    t.integer  "requirement", default: 0,  null: false
+    t.string   "offer"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "biz_offers", ["business_id"], name: "index_biz_offers_on_business_id"
@@ -65,14 +67,29 @@ ActiveRecord::Schema.define(version: 20181009072106) do
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
   add_index "businesses", ["uid", "provider"], name: "index_businesses_on_uid_and_provider", unique: true
 
-  create_table "org_offers", force: :cascade do |t|
+  create_table "deals", force: :cascade do |t|
+    t.integer  "business_id"
+    t.integer  "originzation_id"
+    t.boolean  "biz_accepted"
+    t.boolean  "org_accepted"
+    t.integer  "biz_offer_id"
+    t.integer  "percentage"
+    t.integer  "requirement"
     t.string   "offer"
-    t.integer  "orginization_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  add_index "org_offers", ["orginization_id"], name: "index_org_offers_on_orginization_id"
+  create_table "org_offers", force: :cascade do |t|
+    t.integer  "orginizations_id"
+    t.integer  "members"
+    t.integer  "percentage"
+    t.string   "offer"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "org_offers", ["orginizations_id"], name: "index_org_offers_on_orginizations_id"
 
   create_table "orginizations", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false

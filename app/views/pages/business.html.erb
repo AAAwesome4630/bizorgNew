@@ -1,0 +1,31 @@
+<tbody>
+    <% @biz_offers.each do |biz_offer| %>
+      <tr>
+        <td><%= biz_offer.business.name %></td>
+        <td><%= biz_offer.percentage %></td>
+        <td><%= biz_offer.requirement %></td>
+        <td><%= biz_offer.offer %></td>
+        <td><%= link_to 'Show', biz_offer %></td>
+        <td><%= link_to 'Edit', edit_biz_offer_path(biz_offer) %></td>
+        <td><%= link_to 'Destroy', biz_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+<% if orginization_signed_in? %>
+  
+<iframe width="300" height="300" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3s_5L5B0UKp8aiHQxrF3OwSnUftXoc1c&q=<%=@business.address%>,<%=@business.state%>"
+ allowfullscreen>
+  
+  <%= @distance%>
+</iframe>
+
+<%else %>
+
+<iframe width="300" height="300" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3s_5L5B0UKp8aiHQxrF3OwSnUftXoc1c&q=<%=@business.address%>,<%=@business.state%>"
+ allowfullscreen>
+</iframe>
+
+<%end%>
