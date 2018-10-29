@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :business_id, :value => current_business.id %>
+ 
   <div class="form-group col-md-12">We, <strong><%= current_business.name%></strong>, will give <%= f.number_field :percentage, min: 1, max: 100 %> % of our proceeds, if an organization brings in a minimum of <%= f.number_field :requirement, min: 0 %> dollars in sales:</div>
   <div class="form-group col-md-12">
   <div class="field">

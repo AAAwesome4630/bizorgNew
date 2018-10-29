@@ -1,4 +1,64 @@
+<% if orginization_signed_in? %>
+    <% @org_offers.each do |org_offer| %>
+      <tr>
+        <td><%= org_offer.orginization.name %></td>
+        <td><%= org_offer.percentage %></td>
+        <td><%= org_offer.requirement %></td>
+        <td><%= org_offer.offer %></td>
+        <td><%= link_to 'Show', org_offer %></td>
+        <td><%= link_to 'Edit', edit_org_offer_path(org_offer) %></td>
+        <td><%= link_to 'Destroy', org_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    
+<% elsif business_signed_in? %>
+
+<div class="jumbotron">
+  <h1><center><%=@orginization.name%></center></h1>
+  <p style="text-align-center"><center><%=@orginization.address%> <%=@orginization.city%>, <%=@orginization.state%></center></p>
+  <p style="text-align-center"><center>Description: <%=@orginization.description%></center></p>
+  <p><center>
+      <%= link_to 'Create a Custom Offer', new_deal_path(:orginization_id => params[:id]), :class => "btn btn-primary" %>
+    </center>
+  </p>
+  </div>
+  <div class="row">
+    
+    <div class="col-md-8">
+      <div class="page-header">
+          <h1><center>Current Offers</center></h1>
+        </div>
+  
+      <% @org_offers.each do |org_offer| %>
+      <%= link_to org_offer do%>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong><%=org_offer.percentage%>%</strong> of sales donated for a minimum of <strong><%=org_offer.requirement%>$</strong> in sales
+          <%= link_to 'Create a Custom Offer', new_deal_path(:orginization_id => params[:id]), :class => "btn btn-primary btn-sm" %>
+        </div>
+        
+        </div>
+      <%end%>
+      <%end%>
+      
+    </div>
+    <div class="col-md-4">
+    <iframe width="300" height="300" frameborder="0" style="border:0"
+     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3s_5L5B0UKp8aiHQxrF3OwSnUftXoc1c&q=<%=@orginization.address%>,<%=@orginization.state%>"
+     allowfullscreen>
+      
+      <%= @distance%>
+    </iframe>
+    </div>
+
+  </div>
+  
+
+<%else %>
+
 <iframe width="300" height="300" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3s_5L5B0UKp8aiHQxrF3OwSnUftXoc1c&q=<%=@orginization.address%>,<%=@orginization.state%>"
  allowfullscreen>
 </iframe>
+
+<%end%>

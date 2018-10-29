@@ -1,0 +1,112 @@
+<%= form_for(@deal) do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@biz_offer.errors.count, "error") %> prohibited this biz_offer from being saved:</h2>
+
+      <ul>
+      <% @biz_offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%if @business_status%>
+  
+       <div class="row">
+        
+        <div class="form-group col-md-6">
+          <div class="field">
+            <%= f.label "Business" %><br />
+            <%= f.number_field :business_id, autofocus: true, class: "form-control", :value => @business.id, disabled: true%>
+          </div>
+        </div>
+        
+        <div class="form-group col-md-6">
+          <div class="field">
+            <%= f.label "Orginization" %><br />
+            <%= f.number_field :orginization_id, autofocus: true, class: "form-control", :value => current_orginization.id, disabled: true  %>
+          </div>
+        </div>
+        
+      </div>
+      
+    <%elsif @orginization_status%>
+    
+      <div class="row">
+        
+        <div class="form-group col-md-6">
+          <div class="field">
+            <%= f.label "Business" %><br />
+            <%= f.number_field :business_id, autofocus: true, class: "form-control", :value => current_business.id, disabled: true%>
+          </div>
+        </div>
+        
+        <div class="form-group col-md-6">
+          <div class="field">
+            <%= f.label "Orginization" %><br />
+            <%= f.number_field :orginization_id, autofocus: true, class: "form-control", :value => @orginization.id, disabled: true  %>
+          </div>
+        </div>
+        
+      </div>
+    
+    <%else%>
+    
+        <%if business_signed_in?%>
+  
+           <div class="row">
+            
+            <div class="form-group col-md-6">
+              <div class="field">
+                <%= f.label "Business" %><br />
+                <%= f.number_field :business_id, autofocus: true, class: "form-control", :value => current_business.id, disabled: true%>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <div class="field">
+                <%= f.label "Orginization" %><br />
+                <%= f.number_field :orginization_id, autofocus: true, class: "form-control"%>
+              </div>
+            </div>
+            
+          </div>
+          
+        <%elsif orginization_signed_in?%>
+        
+          <div class="row">
+            
+            <div class="form-group col-md-6">
+              <div class="field">
+                <%= f.label "Business" %><br />
+                <%= f.number_field :business_id, autofocus: true, class: "form-control"%>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <div class="field">
+                <%= f.label "Orginization" %><br />
+                <%= f.number_field :orginization_id, autofocus: true, class: "form-control", :value => current_orginization.id, disabled: true  %>
+              </div>
+            </div>
+            
+          </div>
+        
+        <%end%>
+    
+    <%end%>
+
+  <div class="form-group col-md-12"><%= f.number_field :percentage, min: 1, max: 100 %> % of our proceeds, for a minimum of <%= f.number_field :requirement, min: 0 %> dollars in sales brought:</div>
+  <div class="form-group col-md-12">
+  <div class="field">
+    <%= f.text_area :offer,cols: 20, rows: 5, autofocus: true, class: "form-control big-text", placeholder:"Complete Offer (add other requirements, or constraints)"%>
+  </div>
+  </div>
+  <div class="actions">
+    <center>
+      <%= f.submit "Create Custom Offer" , class:"btn btn-primary" %>
+    </center>
+    
+  </div>
+<% end %>

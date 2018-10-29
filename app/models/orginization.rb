@@ -20,4 +20,9 @@ class Orginization < ActiveRecord::Base
   def self.search(search)
     where("LOWER(name) LIKE ?", "%#{search.downcase}%") 
   end
+  
+  def address_total
+    [address, city, state, country].compact.join(', ')
+  end
+  
 end

@@ -1,4 +1,4 @@
-<tbody>
+<% if business_signed_in? %>
     <% @biz_offers.each do |biz_offer| %>
       <tr>
         <td><%= biz_offer.business.name %></td>
@@ -10,16 +10,49 @@
         <td><%= link_to 'Destroy', biz_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+    
+<% elsif orginization_signed_in? %>
+
+<div class="jumbotron">
+  <h1><center><%=@business.name%></center></h1>
+  <p style="text-align-center"><center><%=@business.address%> <%=@business.city%>, <%=@business.state%></center></p>
+  <p style="text-align-center"><center>Description: <%=@business.description%></center></p>
+  <p><center>
+      <%= link_to 'Create a Custom Offer', new_deal_path(:business_id => params[:id]), :class => "btn btn-primary" %>
+    </center>
+  </p>
+  </div>
+  <div class="row">
+    
+    <div class="col-md-8">
+      <div class="page-header">
+          <h1><center>Current Offers</center></h1>
+        </div>
   
-<% if orginization_signed_in? %>
+      <% @biz_offers.each do |biz_offer| %>
+      <%= link_to biz_offer do%>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong><%=biz_offer.percentage%>%</strong> of sales donated for a minimum of <strong><%=biz_offer.requirement%>$</strong> in sales
+          <%= link_to 'Create a Custom Offer', new_deal_path(:business_id => params[:id]), :class => "btn btn-primary btn-sm" %>
+        </div>
+        
+        </div>
+      <%end%>
+      <%end%>
+      
+    </div>
+    <div class="col-md-4">
+    <iframe width="300" height="300" frameborder="0" style="border:0"
+     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3s_5L5B0UKp8aiHQxrF3OwSnUftXoc1c&q=<%=@business.address%>,<%=@business.state%>"
+     allowfullscreen>
+      
+      <%= @distance%>
+    </iframe>
+    </div>
+
+  </div>
   
-<iframe width="300" height="300" frameborder="0" style="border:0"
- src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3s_5L5B0UKp8aiHQxrF3OwSnUftXoc1c&q=<%=@business.address%>,<%=@business.state%>"
- allowfullscreen>
-  
-  <%= @distance%>
-</iframe>
 
 <%else %>
 
